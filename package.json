@@ -1,0 +1,26 @@
+{
+  "name": "test-rendimiento-app",
+  "version": "1.0.0",
+  "description": "Esta aplicación calcula el rendimiento y las pérdidas económicas por merma en productos alimenticios (vegetales y cárnicos), basada en las fórmulas del documento de la Universitaria Agustiniana.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tomashvii/test-rendimiento-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Tomashvii/test-rendimiento-app/issues"
+  },
+  "homepage": "https://github.com/Tomashvii/test-rendimiento-app#readme",
+  "dependencies": {
+    "@capacitor/android": "^8.1.0",
+    "@capacitor/cli": "^8.1.0",
+    "@capacitor/core": "^8.1.0"
+  }
+}
