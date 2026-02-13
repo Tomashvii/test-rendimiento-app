@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test de Rendimiento</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#4CAF50">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="40" height="40" rx="8" fill="#4CAF50"/>
+                    <path d="M20 10L25 15H22V25H18V15H15L20 10Z" fill="white"/>
+                    <rect x="12" y="27" width="16" height="2" rx="1" fill="white"/>
+                </svg>
+            </div>
+            <h1>Test de Rendimiento</h1>
+            <p class="subtitle">Calculadora de Mermas y Rendimientos</p>
+        </header>
+
+        <div class="card">
+            <h2>Datos del Producto</h2>
+            <form id="rendimientoForm">
+                <div class="form-group">
+                    <label for="producto">Nombre del Producto</label>
+                    <input type="text" id="producto" required placeholder="Ej: Zanahoria">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="valorKilo">Valor por Kilo ($)</label>
+                        <input type="number" id="valorKilo" required placeholder="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="pesoBruto">Peso Bruto (kg)</label>
+                        <input type="number" id="pesoBruto" required placeholder="0" step="0.001">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pesoNeto">Peso Neto (kg)</label>
+                        <input type="number" id="pesoNeto" required placeholder="0" step="0.001">
+                    </div>
+                    <div class="form-group">
+                        <label for="pesoMerma">Peso Merma (kg)</label>
+                        <input type="number" id="pesoMerma" readonly placeholder="Auto">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn-primary">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M10 2C5.58 2 2 5.58 2 10s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z" fill="currentColor"/>
+                        <path d="M9 5h2v5H9zm0 6h2v2H9z" fill="currentColor"/>
+                    </svg>
+                    Calcular Rendimiento
+                </button>
+            </form>
+        </div>
+
+        <div id="resultados" class="card hidden">
+            <h2>Resultados</h2>
+            <div class="results-grid">
+                <div class="result-item">
+                    <span class="result-label">% Rendimiento</span>
+                    <span class="result-value" id="porcRendimiento">--</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">% Merma</span>
+                    <span class="result-value" id="porcMerma">--</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Peso Merma</span>
+                    <span class="result-value" id="pesoMermaRes">--</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Valor Kilo Limpio</span>
+                    <span class="result-value highlight" id="valorKiloLimpio">--</span>
+                </div>
+            </div>
+
+            <div class="cost-summary">
+                <div class="cost-item">
+                    <span>Costo Total Compra:</span>
+                    <strong id="costoTotal">$0</strong>
+                </div>
+                <div class="cost-item">
+                    <span>Pérdida por Merma:</span>
+                    <strong class="loss" id="perdidaMerma">$0</strong>
+                </div>
+            </div>
+
+            <button onclick="guardarRegistro()" class="btn-secondary">Guardar en Historial</button>
+        </div>
+
+        <div id="historial" class="card hidden">
+            <div class="historial-header">
+                <h2>Historial de Registros</h2>
+                <button onclick="limpiarHistorial()" class="btn-delete">Limpiar Todo</button>
+            </div>
+            <div class="table-responsive">
+                <table id="tablaHistorial">
+                    <thead>
+                        <tr>
+                            <th>Producto</th>
+                            <th>Peso Bruto</th>
+                            <th>Peso Neto</th>
+                            <th>% Rend.</th>
+                            <th>% Merma</th>
+                            <th>Valor/Kg Limpio</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablaBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="formulas-card">
+            <h3>📐 Fórmulas Utilizadas</h3>
+            <div class="formula">
+                <strong>% Rendimiento =</strong> (Peso Neto / Peso Bruto) × 100
+            </div>
+            <div class="formula">
+                <strong>% Merma =</strong> 100 - % Rendimiento
+            </div>
+            <div class="formula">
+                <strong>Peso Merma =</strong> Peso Bruto - Peso Neto
+            </div>
+            <div class="formula">
+                <strong>Valor Kilo Limpio =</strong> Valor Kilo / (% Rendimiento / 100)
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

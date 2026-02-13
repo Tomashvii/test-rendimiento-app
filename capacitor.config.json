@@ -1,5 +1,8 @@
 {
   "appId": "com.uniagustiniana.rendimiento",
-  "appName": "test-rendimiento-app",
-  "webDir": " ."
+  "appName": "Test de Rendimiento",
+  "webDir": "www",
+  "server": {
+    "androidScheme": "https"
+  }
 }
